@@ -12,6 +12,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/monnand/dhkx"
@@ -77,8 +78,10 @@ func multithread() bool {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Multithreading (true/false): ")
 	text, _ := reader.ReadString('\n')
+	text = strings.TrimSuffix(text, "\n")
 	newbool, err := strconv.ParseBool(text)
 	if err != nil {
+		panic(err)
 		return multithread()
 	}
 	return newbool
@@ -136,7 +139,6 @@ func CodecServe(addr string, multicore, async bool, codec gnet.ICodec) {
 }
 
 func main() {
-
 	// Start Server
 	multi := multithread()
 	addr := fmt.Sprintf("tcp://:%d", 9000)
