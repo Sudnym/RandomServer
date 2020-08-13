@@ -11,6 +11,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/monnand/dhkx"
@@ -76,15 +77,11 @@ func multithread() bool {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Multithreading (true/false): ")
 	text, _ := reader.ReadString('\n')
-	switch text {
-	case "true":
-		return true
-	case "false":
-		return false
-	default:
+	newbool, err := strconv.ParseBool(text)
+	if err != nil {
 		return multithread()
-
 	}
+	return newbool
 }
 
 // Server event handlers
