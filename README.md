@@ -47,5 +47,6 @@ https://github.com/Sudnym/RandomClient
 
 # Versioning
 
-The alpha did not inclued encryption.
+The alpha did not include encryption.
+
 Beta included dhkx briefly, and now uses RSA encryption.
