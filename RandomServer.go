@@ -103,8 +103,8 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 	if cs.async {
 		data := append([]byte{}, frame...)
 		optionone := []byte{0x000C}
-		if data[1] == optionone[1] && data[0] == optionone[0] {
-			key := data[2:]
+		if data[0] == optionone[0] {
+			key := data[1:]
 			_ = cs.workerPool.Submit(func() {
 				publickey, privkey := getKey(key)
 				globeMap[c] = privkey
@@ -113,7 +113,7 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 			return
 		}
 		datum := decrypt(data, globeMap[c])
-		message := string(datum[2:])
+		message := string(datum[1:])
 		_ = cs.workerPool.Submit(func() {
 			fmt.Println(decrypt([]byte(message), globeMap[c]))
 		})
