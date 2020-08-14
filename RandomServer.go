@@ -103,10 +103,10 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 	if cs.async {
 		data := append([]byte{}, frame...)
 		datum := delimiter.Split(string(data), 2)
-		selector := datum[0]
+		selector := data[:3]
 		message := datum[1]
 		switch selector {
-		case "dhex":
+		case []byte{0x000C}:
 			_ = cs.workerPool.Submit(func() {
 				key := []byte(message)
 				publickey, privkey := getKey(key)
@@ -114,7 +114,7 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 				c.AsyncWrite(publickey)
 			})
 			return
-		case "message":
+		case []byte{0x000B}:
 			_ = cs.workerPool.Submit(func() {
 				fmt.Println(decrypt([]byte(message), globeMap[c]))
 			})

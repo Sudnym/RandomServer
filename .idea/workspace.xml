@@ -10,9 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="Added windows and linux server builds for proof of concept">
-      <change afterPath="$PROJECT_DIR$/RandomServer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RandomServer.exe" afterDir="false" />
+    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="Implementing e2e encryption">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RandomServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.go" afterDir="false" />
     </list>
@@ -110,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597361940317</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implementing e2e encryption">
+      <created>1597364274129</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597364274129</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +138,8 @@
     <MESSAGE value="fixed multithread()" />
     <MESSAGE value="added boolean parsing" />
     <MESSAGE value="Added windows and linux server builds for proof of concept" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added windows and linux server builds for proof of concept" />
+    <MESSAGE value="Implementing e2e encryption" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementing e2e encryption" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597361278588">
@@ -152,9 +158,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597361278588" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597361954800">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597364283216">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597361954800" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597364283216" />
   </component>
 </project>
