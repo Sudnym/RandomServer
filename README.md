@@ -4,7 +4,7 @@ RandomServer is half of a project i'm working on to kill boredom of the masses.
 
 *enter me*
 
-The purpose of RandomServer is to allow any average joe to set up a random server and allow other average joe's to send him stuff using RandomClient.
+The purpose of RandomServer is to allow any average joe to set up a random server and allow other average joe's to send him stuff using RandomClient (https://github.com/Sudnym/RandomClient).
 
 # The How
 
