@@ -44,3 +44,8 @@ Step 9: Test your port forward by installing and running RandomClient and googli
 # The Client
 
 https://github.com/Sudnym/RandomClient
+
+# Versioning
+
+The alpha did not inclued encryption.
+Beta included dhkx briefly, and now uses RSA encryption.
