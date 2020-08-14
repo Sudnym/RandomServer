@@ -2,25 +2,24 @@ package main
 
 import (
 	"bufio"
-	"crypto/aes"
-	"crypto/cipher"
+	"crypto/rand"
+	"crypto/rsa"
+	"crypto/sha256"
+	"encoding/base64"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
+	"github.com/panjf2000/gnet"
 	"github.com/panjf2000/gnet/pool/goroutine"
 	"log"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/monnand/dhkx"
-	"github.com/panjf2000/gnet"
 )
 
 // map to reference for connections
-var globeMap = make(map[gnet.Conn]*dhkx.DHKey)
-var delimiter = regexp.MustCompile(`:`)
+var globeMap = make(map[gnet.Conn]*rsa.PrivateKey)
 
 // codecServer used for initializing the server
 
@@ -33,33 +32,17 @@ type codecServer struct {
 	workerPool *goroutine.Pool
 }
 
-func decrypt(data []byte, key *dhkx.DHKey) []byte {
-	block, err := aes.NewCipher(key.Bytes()[:32])
+func decrypt(cipherText string, privKey rsa.PrivateKey) string {
+	ct, _ := base64.StdEncoding.DecodeString(cipherText)
+	label := []byte("OAEP Encrypted")
+	rng := rand.Reader
+	plaintext, err := rsa.DecryptOAEP(sha256.New(), rng, &privKey, ct, label)
 	if err != nil {
-		panic(err.Error())
+		panic(err)
 	}
-	gcm, err := cipher.NewGCM(block)
-	if err != nil {
-		panic(err.Error())
-	}
-	nonceSize := gcm.NonceSize()
-	nonce, ciphertext := data[:nonceSize], data[nonceSize:]
-	plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
-	if err != nil {
-		fmt.Print(err.Error())
-		panic(err.Error())
-	}
-	return plaintext
+	return string(plaintext)
 }
 
-// Make final key
-func getKey(key []byte) ([]byte, *dhkx.DHKey) {
-	g, _ := dhkx.GetGroup(0)
-	priv, _ := g.GeneratePrivateKey(nil)
-	pub := priv.Bytes()
-	k, _ := g.ComputeKey(dhkx.NewPublicKey(key), priv)
-	return pub, k
-}
 
 // Multithreading response handler
 func multithread() bool {
@@ -85,26 +68,20 @@ func (cs *codecServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {
 
 func (cs *codecServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
 	log.Println("A new connection has been made from: ", c.RemoteAddr().String())
+	privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+	if err != nil {
+		panic(err)
+	}
+	globeMap[c] = privateKey
+	byt, err := json.Marshal(privateKey.PublicKey)
+	c.AsyncWrite(byt)
 	return
 }
 
 func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	if cs.async {
 		data := append([]byte{}, frame...)
-		optionone := []byte{0x000C}
-		if data[0] == optionone[0] {
-			key := data[1:]
-			_ = cs.workerPool.Submit(func() {
-				publickey, privkey := getKey(key)
-				globeMap[c] = privkey
-				err := c.AsyncWrite(publickey)
-				if err != nil {
-					panic(err)
-				}
-			})
-			return
-		}
-		datum := decrypt(data, globeMap[c])
+		datum := decrypt(string(data), *globeMap[c])
 		_ = cs.workerPool.Submit(func() {
 			fmt.Println(string(datum))
 		})
