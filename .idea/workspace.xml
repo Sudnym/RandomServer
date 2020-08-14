@@ -10,8 +10,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="added boolean parsing">
+    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="Added windows and linux server builds for proof of concept">
+      <change afterPath="$PROJECT_DIR$/RandomServer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RandomServer.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +33,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1g435ncqHmLKlBpwmTvFDeB2FcX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
@@ -96,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597360839971</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added windows and linux server builds for proof of concept">
+      <created>1597361940317</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597361940317</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,10 +128,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="fixed multithread()" />
     <MESSAGE value="added boolean parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="added boolean parsing" />
+    <MESSAGE value="Added windows and linux server builds for proof of concept" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added windows and linux server builds for proof of concept" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597361278588">
@@ -136,9 +152,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597361278588" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597360860827">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597361954800">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597360860827" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597361954800" />
   </component>
 </project>

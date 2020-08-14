@@ -11,6 +11,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -19,16 +20,11 @@ import (
 	"github.com/panjf2000/gnet"
 )
 
-// connection used for storing cryptographic keys
+// map to reference for connections
+var globeMap map[gnet.Conn]*dhkx.DHKey
+var delimiter = regexp.MustCompile(`:`)
 
-type connection struct {
-	myKey  *dhkx.DHKey
-	oKey   *dhkx.DHKey
-	finKey *dhkx.DHKey
-	interf gnet.Conn
-}
-
-//codecServer used for initializing the server
+// codecServer used for initializing the server
 
 type codecServer struct {
 	*gnet.EventServer
@@ -72,6 +68,15 @@ func decrypt(data []byte, key *dhkx.DHKey) []byte {
 	return plaintext
 }
 
+// Make final key
+func getKey(key []byte) ([]byte, *dhkx.DHKey) {
+	g, _ := dhkx.GetGroup(0)
+	priv, _ := g.GeneratePrivateKey(nil)
+	pub := priv.Bytes()
+	k, _ := g.ComputeKey(dhkx.NewPublicKey(key), priv)
+	return pub, k
+}
+
 // Multithreading response handler
 func multithread() bool {
 	// Get multithreading
@@ -97,10 +102,24 @@ func (cs *codecServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {
 func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	if cs.async {
 		data := append([]byte{}, frame...)
-		_ = cs.workerPool.Submit(func() {
-			fmt.Println(data)
-		})
-		return
+		datum := delimiter.Split(string(data), 2)
+		selector := datum[0]
+		message := datum[1]
+		switch selector {
+		case "dhex":
+			_ = cs.workerPool.Submit(func() {
+				key := []byte(message)
+				publickey, privkey := getKey(key)
+				globeMap[c] = privkey
+				c.AsyncWrite(publickey)
+			})
+			return
+		case "message":
+			_ = cs.workerPool.Submit(func() {
+				fmt.Println(decrypt([]byte(message), globeMap[c]))
+			})
+			return
+		}
 	}
 	out = frame
 	return
@@ -142,5 +161,5 @@ func main() {
 	// Start Server
 	multi := multithread()
 	addr := fmt.Sprintf("tcp://:%d", 9000)
-	CodecServe(addr, multi, false, nil)
+	CodecServe(addr, multi, true, nil)
 }
