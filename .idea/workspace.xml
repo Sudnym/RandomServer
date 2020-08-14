@@ -10,7 +10,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="fixed e2e issue" />
+    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="handled unhandled error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RandomServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597368831802</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="handled unhandled error">
+      <created>1597422492710</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597422492710</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +180,8 @@
     <MESSAGE value="Updated encryption and message handling for code optimization" />
     <MESSAGE value="got rid of selector and optimized with if statement" />
     <MESSAGE value="fixed e2e issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed e2e issue" />
+    <MESSAGE value="handled unhandled error" />
+    <option name="LAST_COMMIT_MESSAGE" value="handled unhandled error" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597394823740">
@@ -208,9 +220,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597374478412" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597368868885">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597422498139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597368868885" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597422498139" />
   </component>
 </project>

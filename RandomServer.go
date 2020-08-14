@@ -50,6 +50,7 @@ func multithread() bool {
 	fmt.Print("Multithreading (true/false): ")
 	text, _ := reader.ReadString('\n')
 	text = strings.TrimSuffix(text, "\n")
+	text = strings.TrimSuffix(text, "\r")
 	newbool, err := strconv.ParseBool(text)
 	if err != nil {
 		panic(err)
