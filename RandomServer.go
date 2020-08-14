@@ -43,7 +43,6 @@ func decrypt(cipherText string, privKey rsa.PrivateKey) string {
 	return string(plaintext)
 }
 
-
 // Multithreading response handler
 func multithread() bool {
 	// Get multithreading
@@ -74,7 +73,7 @@ func (cs *codecServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
 	}
 	globeMap[c] = privateKey
 	byt, err := json.Marshal(privateKey.PublicKey)
-	c.AsyncWrite(byt)
+	err = c.AsyncWrite(byt)
 	return
 }
 
