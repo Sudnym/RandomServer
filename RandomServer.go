@@ -4,11 +4,9 @@ import (
 	"bufio"
 	"crypto/aes"
 	"crypto/cipher"
-	"crypto/rand"
 	"encoding/binary"
 	"fmt"
 	"github.com/panjf2000/gnet/pool/goroutine"
-	"io"
 	"log"
 	"os"
 	"regexp"
@@ -21,7 +19,7 @@ import (
 )
 
 // map to reference for connections
-var globeMap map[gnet.Conn]*dhkx.DHKey
+var globeMap = make(map[gnet.Conn]*dhkx.DHKey)
 var delimiter = regexp.MustCompile(`:`)
 
 // codecServer used for initializing the server
@@ -35,23 +33,8 @@ type codecServer struct {
 	workerPool *goroutine.Pool
 }
 
-// DHEX AES encrypt / decrypt functions
-func encrypt(data []byte, key *dhkx.DHKey) []byte {
-	block, _ := aes.NewCipher(key.Bytes())
-	gcm, err := cipher.NewGCM(block)
-	if err != nil {
-		panic(err.Error())
-	}
-	nonce := make([]byte, gcm.NonceSize())
-	if _, err = io.ReadFull(rand.Reader, nonce); err != nil {
-		panic(err.Error())
-	}
-	ciphertext := gcm.Seal(nonce, nonce, data, nil)
-	return ciphertext
-}
-
 func decrypt(data []byte, key *dhkx.DHKey) []byte {
-	block, err := aes.NewCipher(key.Bytes())
+	block, err := aes.NewCipher(key.Bytes()[:32])
 	if err != nil {
 		panic(err.Error())
 	}
@@ -63,6 +46,7 @@ func decrypt(data []byte, key *dhkx.DHKey) []byte {
 	nonce, ciphertext := data[:nonceSize], data[nonceSize:]
 	plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
 	if err != nil {
+		fmt.Print(err.Error())
 		panic(err.Error())
 	}
 	return plaintext
@@ -99,6 +83,11 @@ func (cs *codecServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {
 	return
 }
 
+func (cs *codecServer) OnOpened(c gnet.Conn) (out []byte, action gnet.Action) {
+	log.Println("A new connection has been made from: ", c.RemoteAddr().String())
+	return
+}
+
 func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	if cs.async {
 		data := append([]byte{}, frame...)
@@ -108,14 +97,16 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 			_ = cs.workerPool.Submit(func() {
 				publickey, privkey := getKey(key)
 				globeMap[c] = privkey
-				c.AsyncWrite(publickey)
+				err := c.AsyncWrite(publickey)
+				if err != nil {
+					panic(err)
+				}
 			})
 			return
 		}
 		datum := decrypt(data, globeMap[c])
-		message := string(datum[1:])
 		_ = cs.workerPool.Submit(func() {
-			fmt.Println(decrypt([]byte(message), globeMap[c]))
+			fmt.Println(string(datum))
 		})
 		return
 	}
