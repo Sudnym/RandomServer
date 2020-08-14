@@ -8,7 +8,7 @@ The purpose of RandomServer is to allow any average joe to set up a random serve
 
 # The How
 
-RandomServer uses gnet (https://github.com/panjf2000/gnet) to set up a server that awaits connections and uses diffie hellman key exchange (https://github.com/monnand/dhkx) to create e2e encryption, and then the server recieves a message, and sends the message to the terminal.
+RandomServer uses gnet (https://github.com/panjf2000/gnet) to set up a server that awaits connections and uses RSA key exchange (https://golang.org/pkg/crypto/rsa) to create e2e encryption, and then the server recieves a message, and sends the message to the terminal.
 
 # The Why
 
