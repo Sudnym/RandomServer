@@ -10,7 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="Changed reaction selector to use []byte hex instead of string and delimiter for cleaner code">
+    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="Updated encryption and message handling for code optimization">
       <change beforePath="$PROJECT_DIR$/RandomServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597365104687</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated encryption and message handling for code optimization">
+      <created>1597365765502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597365765502</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +153,8 @@
     <MESSAGE value="Added windows and linux server builds for proof of concept" />
     <MESSAGE value="Implementing e2e encryption" />
     <MESSAGE value="Changed reaction selector to use []byte hex instead of string and delimiter for cleaner code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed reaction selector to use []byte hex instead of string and delimiter for cleaner code" />
+    <MESSAGE value="Updated encryption and message handling for code optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated encryption and message handling for code optimization" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597361278588">
@@ -165,9 +173,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597361278588" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597364283216">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597365769266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597364283216" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597365769266" />
   </component>
 </project>

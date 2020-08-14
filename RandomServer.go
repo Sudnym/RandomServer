@@ -102,24 +102,22 @@ func (cs *codecServer) OnInitComplete(srv gnet.Server) (action gnet.Action) {
 func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.Action) {
 	if cs.async {
 		data := append([]byte{}, frame...)
-		datum := decrypt(data, globeMap[c])
-		selector := datum[:3]
-		switch selector {
-		case []byte{0x000C}:
-			key := datum[3:]
+		optionone := []byte{0x000C}
+		if data[1] == optionone[1] && data[0] == optionone[0] {
+			key := data[2:]
 			_ = cs.workerPool.Submit(func() {
 				publickey, privkey := getKey(key)
 				globeMap[c] = privkey
 				c.AsyncWrite(publickey)
 			})
 			return
-		case []byte{0x000B}:
-			message := string(datum[3:])
-			_ = cs.workerPool.Submit(func() {
-				fmt.Println(decrypt([]byte(message), globeMap[c]))
-			})
-			return
 		}
+		datum := decrypt(data, globeMap[c])
+		message := string(datum[2:])
+		_ = cs.workerPool.Submit(func() {
+			fmt.Println(decrypt([]byte(message), globeMap[c]))
+		})
+		return
 	}
 	out = frame
 	return
