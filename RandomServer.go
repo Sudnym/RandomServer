@@ -31,6 +31,10 @@ type codecServer struct {
 	codec      gnet.ICodec
 	workerPool *goroutine.Pool
 }
+type keypair struct {
+	myprivkey   *rsa.PublicKey
+	theirpubkey *rsa.PublicKey
+}
 
 func decrypt(cipherText string, privKey rsa.PrivateKey) string {
 	ct, _ := base64.StdEncoding.DecodeString(cipherText)
@@ -83,7 +87,7 @@ func (cs *codecServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet
 		data := append([]byte{}, frame...)
 		datum := decrypt(string(data), *globeMap[c])
 		_ = cs.workerPool.Submit(func() {
-			fmt.Println(string(datum))
+			fmt.Println(datum)
 		})
 		return
 	}

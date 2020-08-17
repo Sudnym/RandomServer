@@ -10,9 +10,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="handled unhandled error">
+    <list default="true" id="d27072b1-805d-4d74-b137-d008d4abadba" name="Default Changelist" comment="rebuilt after parsing error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RandomServer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RandomServer.go" beforeDir="false" afterPath="$PROJECT_DIR$/RandomServer.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +150,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597422492710</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fixed parsing error">
+      <created>1597440023770</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1597440023770</updated>
+    </task>
+    <task id="LOCAL-00012" summary="rebuilt after parsing error">
+      <created>1597440132183</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1597440132183</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,29 +194,31 @@
     <MESSAGE value="got rid of selector and optimized with if statement" />
     <MESSAGE value="fixed e2e issue" />
     <MESSAGE value="handled unhandled error" />
-    <option name="LAST_COMMIT_MESSAGE" value="handled unhandled error" />
+    <MESSAGE value="fixed parsing error" />
+    <MESSAGE value="rebuilt after parsing error" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuilt after parsing error" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597394823740">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1597456219815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597394823740" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597439789937">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597456219815" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1597443983463">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597439789937" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1597439789936">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1597443983463" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1597443983463">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597439789936" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1597439789936">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1597443983463" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1597443983463">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597439789936" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1597439789936">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1597443983463" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1597443983463">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597439789936" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1597443983463" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1597374478412">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -220,9 +235,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597374478412" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597440031142">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1597440135516">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597440031142" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597440135516" />
   </component>
 </project>
